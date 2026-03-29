@@ -32,16 +32,19 @@ Example output:
 
 ```text
 Initializing Batch Process..
+Processed: Raman Kutty Menon
+Processed: Saradha Krishnan
 Processed: Thankamma Nair
 Processed: Govindan Pillai
+Processed: Mariamma Varghese
 
-SUCCESS: 2 calls summarized in ./output/care_summary.csv
+SUCCESS: 5 calls summarized in ./output/care_summary.csv
 JSON output written to ./output/care_summary.json
 
 Summary
-- Calls processed: 2
-- Calls with concerns flagged: 2
-- Calls needing follow-up: 2
+- Calls processed: 5
+- Calls with concerns flagged: 5
+- Calls needing follow-up: 5
 ```
 
 ## Input format
