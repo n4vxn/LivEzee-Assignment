@@ -59,3 +59,49 @@ Generated in [output/](output/):
 
 - [output/care_summary.json](output/care_summary.json): one structured JSON entry per transcript
 - [output/care_summary.csv](output/care_summary.csv): flattened CSV view
+
+## Prompt used
+
+```text
+You are an elderly care assistant analyzing a call transcript.
+
+Extract structured health and emotional insights.
+
+Return ONLY a valid JSON object.
+Do NOT include any text before or after the JSON.
+Do NOT use markdown or code blocks.
+
+STRICT JSON FORMAT:
+{
+  "physical_concerns": [],
+  "mood_signal": "positive|neutral|concerned",
+  "follow_up_actions": [],
+  "priority": "low|medium|high"
+}
+
+Rules:
+
+1. physical_concerns:
+   - Include only clear health-related issues
+   - Examples: pain, missed medication, high BP, mobility issues
+   - Do NOT include vague statements
+
+2. mood_signal:
+   - positive → cheerful, stable
+   - neutral → normal, no distress
+   - concerned → sadness, anxiety, confusion, discomfort
+
+3. priority:
+   - high → urgent risk (severe symptoms, missed critical meds, confusion, fall risk)
+   - medium → needs follow-up (mild pain, elevated BP, medication gaps)
+   - low → stable, no issues
+
+4. follow_up_actions:
+   - Include actions mentioned OR clearly needed
+   - Keep them short and practical
+
+5. If no data is found for a field, return empty list [] (not null).
+
+Transcript:
+{text}
+```
