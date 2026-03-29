@@ -1,10 +1,11 @@
 # LivEzee Assignment
 
-Simple batch script to process call transcripts and generate:
+A Python script to process call transcripts and extract structured insights.
 
-- structured JSON output
-- manager-friendly CSV output
-- a short terminal summary
+The script reads transcript files and generates:
+- structured JSON output (one entry per transcript)
+- manager-friendly CSV output for easy review
+- a concise terminal summary of processed calls
 
 ## Setup
 
