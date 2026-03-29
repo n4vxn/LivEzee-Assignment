@@ -1,16 +1,20 @@
-import re
 import json
+import re
+
 
 def extract_metadata(text):
+    # Header lines are simple, so regex keeps this fast and deterministic.
     name_match = re.search(r"(?i)Client\s*:\s*(.*)", text)
     date_match = re.search(r"(?i)Date\s*:\s*(.*)", text)
 
     return {
         "client_name": name_match.group(1).strip() if name_match else "Unknown",
-        "call_date": date_match.group(1).strip() if date_match else "Unknown"
+        "call_date": date_match.group(1).strip() if date_match else "Unknown",
     }
 
+
 def get_llm_analysis(model, text):
+    # Prompt used for llm analysis output
     prompt = f"""
 You are an elderly care assistant analyzing a call transcript.
 
@@ -54,7 +58,12 @@ Rules:
 Transcript:
 {text}
 """
-    response = model.models.generate_content(prompt)
+    response = model.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=prompt,
+        config={"response_mime_type": "application/json"},
+    )
 
-    raw_json = response.text.replace('```json', '').replace('```', '').strip()
+    # Defensive cleanup in case the model wraps JSON in markdown fences.
+    raw_json = response.text.replace("```json", "").replace("```", "").strip()
     return json.loads(raw_json)

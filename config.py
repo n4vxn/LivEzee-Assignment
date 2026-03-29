@@ -8,4 +8,5 @@ def setup_client():
     if not api_key:
         raise ValueError("Error: GEMINI_API_KEY not found in .env file.")
 
+    # Single client instance reused by the batch run.
     return genai.Client(api_key=api_key)

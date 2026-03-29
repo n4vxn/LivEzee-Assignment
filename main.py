@@ -5,6 +5,7 @@ from config import setup_client
 from parser import extract_metadata, get_llm_analysis
 
 def run_batch_process():
+    # Initialize AI client once; avoid reconnecting for every transcript.
     model = setup_client()
     folder_path = "./transcripts"
     output_path = "./output/care_summary.csv"
@@ -16,15 +17,16 @@ def run_batch_process():
 
     print("Initializing Batch Process..")
 
+    # Process each transcript independently so one failure doesn't stop the run.
     for filename in os.listdir(folder_path):
         if filename.endswith(".txt"):
             with open(os.path.join(folder_path, filename), 'r') as f:
                 content = f.read()
                 
-                # 1. Regex Metadata
+                # Regex Metadata
                 meta = extract_metadata(content)
                 
-                # 2. LLM Deep Dive
+                # LLM analysis
                 try:
                     analysis = get_llm_analysis(model, content)
 
@@ -46,11 +48,11 @@ def run_batch_process():
                 except Exception as e:
                     print(f"Error processing {filename}: {e}")
 
-    # 3. Write JSON output first
+    # Write JSON output
     with open(json_output_path, "w") as json_file:
         json.dump(json_results, json_file, indent=2)
 
-    # 4. Convert JSON -> CSV
+    # Convert JSON to CSV
     with open(json_output_path, "r") as json_file:
         saved_json = json.load(json_file)
 
@@ -68,13 +70,14 @@ def run_batch_process():
     df = pd.DataFrame(csv_rows)
     df.to_csv(output_path, index=False)
 
+    # Quick rollout metrics for operators.
     concerns_flagged = sum(1 for entry in saved_json if entry.get("physical_concerns"))
     needs_follow_up = sum(1 for entry in saved_json if entry.get("follow_up_actions"))
 
     print(f"\nSUCCESS: {len(saved_json)} calls summarized in {output_path}")
     print(f"JSON output written to {json_output_path}")
 
-    # 5. Terminal summary
+    # Terminal summary
     print("\nSummary")
     print(f"- Calls processed: {len(saved_json)}")
     print(f"- Calls with concerns flagged: {concerns_flagged}")

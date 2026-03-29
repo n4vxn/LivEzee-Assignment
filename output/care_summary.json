@@ -1,0 +1,92 @@
+[
+  {
+    "transcript_file": "transcript_004.txt",
+    "client": "Raman Kutty Menon",
+    "date": "17 March 2026",
+    "mood": "concerned",
+    "priority": "high",
+    "physical_concerns": [
+      "Risk of slipping due to wet bathroom floor",
+      "Poor sleep for three nights",
+      "Inadequate nutrition (eating biscuits for dinner)"
+    ],
+    "follow_up_actions": [
+      "Arrange handyman visit for bathroom tap",
+      "Explore tiffin service/assistance for nutrition",
+      "Notify Dr Thomas and family about sleep issue",
+      "Call son for update on tap repair timeline",
+      "Schedule earlier follow-up call (19 March 2026)"
+    ]
+  },
+  {
+    "transcript_file": "transcript_005.txt",
+    "client": "Saradha Krishnan",
+    "date": "18 March 2026",
+    "mood": "positive",
+    "priority": "high",
+    "physical_concerns": [
+      "chest tightness",
+      "history of mild arrhythmia"
+    ],
+    "follow_up_actions": [
+      "Contact cardiologist Dr Anish today",
+      "Report both chest tightness episodes to cardiologist",
+      "Inform daughter Preethi",
+      "Advise client to call 112 or LivEzee if symptoms recur",
+      "Schedule next call for tomorrow, 19 March 2026"
+    ]
+  },
+  {
+    "transcript_file": "transcript_001.txt",
+    "client": "Thankamma Nair",
+    "date": "14 March 2026",
+    "mood": "positive",
+    "priority": "medium",
+    "physical_concerns": [
+      "missed Amlodipine medication for two days",
+      "high blood pressure (148/92)",
+      "right knee pain when climbing stairs",
+      "mobility issue (avoiding first floor bedroom)"
+    ],
+    "follow_up_actions": [
+      "arrange pharmacy pickup and delivery of Amlodipine today",
+      "flag BP reading to Dr Priya for review",
+      "note knee issue, monitor next call",
+      "suggest physio if knee pain persists beyond two weeks"
+    ]
+  },
+  {
+    "transcript_file": "transcript_002.txt",
+    "client": "Govindan Pillai",
+    "date": "15 March 2026",
+    "mood": "concerned",
+    "priority": "medium",
+    "physical_concerns": [
+      "Slight cold",
+      "Hoarse voice",
+      "Sore throat",
+      "Runny nose"
+    ],
+    "follow_up_actions": [
+      "No medical action needed for cold unless it worsens beyond 3-4 days",
+      "Flag emotional state to care coordinator",
+      "Consider arranging a friendly visitor or activity this week",
+      "Check in again on 17 March (earlier than scheduled)",
+      "Confirm Sreelakshmi is around for a few days"
+    ]
+  },
+  {
+    "transcript_file": "transcript_003.txt",
+    "client": "Mariamma Varghese",
+    "date": "16 March 2026",
+    "mood": "positive",
+    "priority": "medium",
+    "physical_concerns": [
+      "difficulty opening medication blister pack (stiff fingers)"
+    ],
+    "follow_up_actions": [
+      "Source easy-open medication packaging or pill organiser",
+      "Discuss afternoon activity options"
+    ]
+  }
+]
